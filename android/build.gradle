@@ -9,7 +9,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0-rc02'
+        classpath "com.android.tools.build:gradle:8.0.0"
+//        classpath 'com.android.tools.build:gradle:7.6.1' //:7.4.0-rc02
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -25,7 +26,14 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+
+    namespace = "co.paystack.flutterpaystack"
+
     compileSdkVersion 32
+
+    kotlinOptions {
+        jvmTarget = "1.8" // Use "17" for Java 17 or adjust based on your environment
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
