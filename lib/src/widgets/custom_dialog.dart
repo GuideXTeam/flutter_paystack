@@ -74,7 +74,19 @@ class CustomAlertDialog extends StatelessWidget {
                       new Align(
                         alignment: Alignment.topRight,
                         child: new IconButton(
-                          icon: new Icon(Icons.close),
+                          icon: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade400,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Icon(
+                                  Icons.close,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              )),
                           onPressed: onCancelPress,
                           color: Colors.black54,
                           padding: const EdgeInsets.all(15.0),
