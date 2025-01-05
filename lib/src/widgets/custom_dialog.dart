@@ -84,7 +84,7 @@ class CustomAlertDialog extends StatelessWidget {
                                 child: Icon(
                                   Icons.close,
                                   color: Colors.white,
-                                  size: 16,
+                                  size: 18,
                                 ),
                               )),
                           onPressed: onCancelPress,
