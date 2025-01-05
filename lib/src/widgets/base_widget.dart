@@ -33,22 +33,28 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
       return false;
     }
 
-    var text = new Text(confirmationMessage);
+    var text = new Text(
+      confirmationMessage,
+      style: TextStyle(
+        fontSize: 17,
+      ),
+    );
 
     var dialog = Platform.isIOS
-        ? new CupertinoAlertDialog(
+        ? CupertinoAlertDialog(
             content: text,
             actions: <Widget>[
-              new CupertinoDialogAction(
-                child: const Text('Yes'),
+              CupertinoDialogAction(
+                child: const Text('Yes',
+                    style: TextStyle(color: Colors.black, fontSize: 16)),
                 isDestructiveAction: true,
                 onPressed: () {
-                  Navigator.pop(context, true); // Returning true to
-                  // _onWillPop will pop again.
+                  Navigator.pop(context,
+                      true); // Returning true to _onWillPop will pop again.
                 },
               ),
-              new CupertinoDialogAction(
-                child: const Text('No'),
+              CupertinoDialogAction(
+                child: const Text('No', style: TextStyle(color: Colors.black)),
                 isDefaultAction: true,
                 onPressed: () {
                   Navigator.pop(context,
@@ -57,21 +63,24 @@ abstract class BaseState<T extends StatefulWidget> extends State<T> {
               ),
             ],
           )
-        : new AlertDialog(
+        : AlertDialog(
+            backgroundColor: Colors.white, // Set background color to white
             content: text,
             actions: <Widget>[
-              new TextButton(
-                  child: const Text('NO'),
-                  onPressed: () {
-                    Navigator.of(context).pop(
-                        false); // Pops the confirmation dialog but not the page.
-                  }),
-              new TextButton(
-                  child: const Text('YES'),
-                  onPressed: () {
-                    Navigator.of(context).pop(
-                        true); // Returning true to _onWillPop will pop again.
-                  })
+              TextButton(
+                child: const Text('NO', style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Navigator.of(context).pop(
+                      false); // Pops the confirmation dialog but not the page.
+                },
+              ),
+              TextButton(
+                child: const Text('YES', style: TextStyle(color: Colors.black)),
+                onPressed: () {
+                  Navigator.of(context).pop(
+                      true); // Returning true to _onWillPop will pop again.
+                },
+              ),
             ],
           );
 
